@@ -326,33 +326,35 @@ div {
 }
 ```
 ### 导入
+#### 其他文件导入less
 导入 less 文件 可省略后缀
 ```js
 import "main"; 
 //等价于
 import "main.less";
 ```
+#### less文件之间互相导入
 @import 的位置可随意放置
 ```css
 #main{
   font-size:15px;
 }
-@import "style";
+@import "main.less";
 ```
-#### reference
+##### 导入选项
+- reference
 使用@import (reference)导入外部文件，但不会添加 把导入的文件 编译到最终输出中，只引用。
 ```css
 @import (reference) "bootstrap.less"; 
-
 #wrap:extend(.navbar all){}
 ```
-#### once
+- once
 @import语句的默认行为。这表明相同的文件只会被导入一次，而随后的导入文件的重复代码都不会解析。
 ```css
 @import (once) "foo.less";
 @import (once) "foo.less"; // this statement will be ignored
 ```
-#### multiple
+- multiple
 使用@import (multiple)允许导入多个同名文件。
 ```css
 // file: main.less

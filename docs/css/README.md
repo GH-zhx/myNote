@@ -2,6 +2,11 @@
 ## 绝对定位
 开启该属性后，元素相对视口定位 当元素祖先的 transform、perspective、filter 或 backdrop-filter 属性非 none 时，包含块由视口改为该祖先
 
+## 引入文件
+```css
+@import url('demo.css')
+```
+
 ## 单位
 ### px
 像素单位，1px代表一个像素。
