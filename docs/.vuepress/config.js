@@ -14,6 +14,14 @@ module.exports = {
     lastUpdated: false,
     navbar: [
       {
+        text: "WebAPI",
+        link: "/WebAPI/",
+      },
+      {
+        text: "structure",
+        link: "/structure/",
+      },
+      {
         text: "structure",
         link: "/structure/",
       },
@@ -176,6 +184,12 @@ module.exports = {
         {
           // text: '面试题',
           children: ['/test/README.md']
+        }
+      ],
+      "/WebAPI/": [
+        {
+          text: 'WebAPI',
+          children: ['/WebAPI/README.md']
         }
       ],
     },

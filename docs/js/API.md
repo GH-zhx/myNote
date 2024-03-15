@@ -508,23 +508,144 @@ for (let [index, elem] of ['a', 'b'].entries()) {
 - onwheel	该事件在鼠标滚轮在元素上下滚动时触发。
 - visibilitychange	该事件用于检测当前页面的可见性状态是否发生变化。`
 
-## image
-图片对象，每加载一个img标签就会创建一个图片对象，同样可以使用Image构造函数创建图片对象。两者创建的图片对象是一样的。
+## document
+文档对象
 ### 属性
-- align	设置或返回与内联内容的对齐方式。
-- alt	设置或返回无法显示图像时的替代文本。
-- border	设置或返回图像周围的边框。
-- complete	返回浏览器是否已完成对图像的加载。
-- height	设置或返回图像的高度。
-- hspace	设置或返回图像左侧和右侧的空白。
-- longDesc	设置或返回指向包含图像描述的文档的 URL。
-- lowsrc	设置或返回指向图像的低分辨率版本的 URL。
-- name	设置或返回图像的名称。
-- src	设置或返回图像的 URL。
-- useMap	设置或返回客户端图像映射的 usemap 属性的值。
-- vspace	设置或返回图像的顶部和底部的空白。
-- width	设置或返回图像的宽度。
-### 事件
-- onabort	当用户放弃图像的装载时调用的事件句柄。
-- onerror	在装载图像的过程中发生错误时调用的事件句柄。
-- onload	当图像装载完毕时调用的事件句柄。
+- document.activeElement	返回当前获取焦点元素
+- document.applets	html5已弃用。
+- document.cookie	设置或返回与当前文档有关的所有 cookie。
+- document.createDocumentFragment()	创建空的 DocumentFragment 对象，并返回此对象。
+- document.doctype	返回与文档相关的文档类型声明 (DTD)。
+- document.implementation	返回处理该文档的 DOMImplementation 对象。
+- document.lastModified	返回文档被最后修改的日期和时间。
+- document.referrer	返回载入当前文档的文档的 URL。
+- document.strictErrorChecking	设置或返回是否强制进行错误检查。
+- document.URL	返回文档完整的URL
+- document.anchors	返回对文档中所有 Anchor 对象的引用。
+- document.baseURI	返回文档的绝对基础 URI
+- document.body	返回文档的body元素
+- document.documentElement	返回文档的根节点
+- document.documentMode	返回用于通过浏览器渲染文档的模式
+- document.documentURI	设置或返回文档的位置
+- document.domain	返回当前文档的域名。
+- document.domConfig	已废弃。返回 normalizeDocument() 被调用时所使用的配置。
+- document.embeds	返回文档中所有嵌入的内容（embed）集合
+- document.forms	返回对文档中所有 Form 对象引用。
+- document.images	返回对文档中所有 Image 对象引用。
+- document.inputEncoding	返回用于文档的编码方式（在解析时）。- document.links	返回对文档中所有 Area 和 Link 对象引用。
+- document.readyState	返回文档状态 (载入中……)
+- document.scripts	返回页面中所有脚本的集合。
+- document.title	返回当前文档的标题。
+### 方法
+- document.addEventListener()	向文档添加句柄
+- document.adoptNode(node)	从另外一个文档返回 adapded 节点到当前文档。
+- document.close()	关闭用 document.open() 方法打开的输出流，并显示选定的数据。
+- document.createAttribute()	创建一个属性节点
+- document.createComment()	createComment() 方法可创建注释节点。
+- document.createElement()	创建元素节点。
+- document.createTextNode()	创建文本节点。
+- document.execCommand() 用于对电脑剪切板的写入和读取，现已不推荐使用。
+- document.getElementsByClassName()	返回文档中所有指定类名的元素集合，作为 NodeList 对象。
+- document.getElementById()	返回对拥有指定 id 的第一个对象的引用。
+- document.getElementsByName()	返回带有指定名称的对象集合。
+- document.getElementsByTagName()	返回带有指定标签名的对象集合。
+- document.importNode()	把一个节点从另一个文档复制到该文档以便应用。
+- document.normalize()	删除空文本节点，并连接相邻节点
+- document.normalizeDocument()	删除空文本节点，并连接相邻节点的
+- document.open()	打开一个流，以收集来自任何 document.write() 或 document.writeln() 方法的输出。
+- document.querySelector()	返回文档中匹配指定的CSS选择器的第一元素
+- document.querySelectorAll()	document.querySelectorAll() 是 HTML5中引入的新方法，返回文档中匹配的CSS选择器的所有元素节点列表
+- document.removeEventListener()	移除文档中的事件句柄(由 addEventListener() 方法添加)
+- document.renameNode()	重命名元素或者属性节点。
+- document.write()	- 向文档写 HTML 表达式 或 JavaScript 代码。
+- document.writeln()
+
+## window对象
+### 属性
+- closed	返回窗口是否已被关闭。
+- defaultStatus	设置或返回窗口状态栏中的默认文本。
+- document	对 Document 对象的只读引用。(请参阅对象)
+- frames	返回窗口中所有命名的框架。该集合是 Window 对象的数组，每个 Window 对象在窗口中含有一个框架。
+- history	对 History 对象的只读引用。请参数 History 对象。
+- innerHeight	返回窗口的文档显示区的高度。
+- innerWidth	返回窗口的文档显示区的宽度。
+- localStorage	在浏览器中存储 key/value 对。没有过期时间。
+- length	设置或返回窗口中的框架数量。
+- location	用于窗口或框架的 Location 对象。请参阅 Location 对象。
+- name	设置或返回窗口的名称。
+- navigator	对 Navigator 对象的只读引用。请参数 Navigator 对象。
+- opener	返回对创建此窗口的窗口的引用。
+- outerHeight	返回窗口的外部高度，包含工具条与滚动条。
+- outerWidth	返回窗口的外部宽度，包含工具条与滚动条。
+- pageXOffset	设置或返回当前页面相对于窗口显示区左上角的 X 位置。
+- pageYOffset	设置或返回当前页面相对于窗口显示区左上角的 Y 位置。
+- parent	返回父窗口。
+- screen	对 Screen 对象的只读引用。请参数 Screen 对象。
+- screenLeft	返回相对于屏幕窗口的x坐标
+- screenTop	返回相对于屏幕窗口的y坐标
+- screenX	返回相对于屏幕窗口的x坐标
+- sessionStorage	在浏览器中存储 key/value 对。 在关闭窗口或标签页之后将会删除这些数据。
+- screenY	返回相对于屏幕窗口的y坐标
+- self	返回对当前窗口的引用。等价于 Window 属性。
+- status	设置窗口状态栏的文本。
+- top	返回最顶层的父窗口。
+### 方法
+- alert()	显示带有一段消息和一个确认按钮的警告框。
+- atob()	解码一个 base-64 编码的字符串。
+- btoa()	创建一个 base-64 编码的字符串。
+- blur()	把键盘焦点从顶层窗口移开。
+- clearInterval()	取消由 setInterval() 设置的 timeout。
+- clearTimeout()	取消由 setTimeout() 方法设置的 timeout。
+- close()	关闭浏览器窗口。
+- confirm()	显示带有一段消息以及确认按钮和取消按钮的对话框。
+- createPopup()	创建一个 pop-up 窗口。
+- focus()	把键盘焦点给予一个窗口。
+- getSelection()	返回一个 Selection 对象，表示用户选择的文本范围或光标的当前位置。
+- getComputedStyle()	获取指定元素的 CSS 样式。
+- matchMedia()	该方法用来检查 media query 语句，它返回一个 MediaQueryList对象。
+- moveBy()	可相对窗口的当前坐标把它移动指定的像素。
+- moveTo()	把窗口的左上角移动到一个指定的坐标。
+- open()	打开一个新的浏览器窗口或查找一个已命名的窗口。
+- print()	打印当前窗口的内容。
+- prompt()	显示可提示用户输入的对话框。
+- resizeBy()	按照指定的像素调整窗口的大小。
+- resizeTo()	把窗口的大小调整到指定的宽度和高度。
+- scroll()	已废弃。 该方法已经使用了 scrollTo() 方法来替代。
+- scrollBy()	按照指定的像素值来滚动内容。
+- scrollTo()	把内容滚动到指定的坐标。
+- setInterval()	按照指定的周期（以毫秒计）来调用函数或计算表达式。
+- setTimeout()	在指定的毫秒数后调用函数或计算表达式。
+- stop()	停止页面载入。
+- postMessage()	安全地实现跨源通信。
+
+## Navigator
+- appCodeName	返回浏览器的代码名
+- appName	返回浏览器的名称
+- appVersion	返回浏览器的平台和版本信息
+- cookieEnabled	返回指明浏览器中是否启用 cookie 的布尔值
+- platform	返回运行浏览器的操作系统平台
+- userAgent	返回由客户机发送服务器的user-agent 头部的值
+- geolocation	返回浏览器的地理位置信息
+- language	返回浏览器使用的语言
+- onLine	返回浏览器是否在线，在线返回-  ture，否则返回 false
+- product	返回浏览器使用的引擎（产品）
+- javaEnabled()	指定是否在浏览器中启用Java
+- taintEnabled()	规定浏览器是否启用数据污点(data tainting)
+
+## 鼠标位置属性
+- clientX    以浏览器左上顶角为原点，定位鼠标 x 轴坐标
+- clientY    以浏览器左上顶角为原点，定位鼠标ｙ轴坐标
+- offsetX    以当前事件的目标对象左上角为原点，定位鼠标x轴坐标
+- offsetY    以当前事件的目标对象左上角为原点，定位鼠标y轴坐标
+- pageX    以Document 对象（即文本窗口）左上角为原点，定位鼠标x轴坐标
+- pageY    以Document 对象（即文本窗口）左上角为原点，定位鼠标ｙ轴坐标
+- screenX    计算机屏幕左上角为原点，定位鼠标x轴坐标
+- screenY    计算机屏幕左上角为原点，定位鼠标ｙ轴坐标
+- layerX    最近的绝对定位的父元素（如果没有，则为Document对象）左上角为原点，定位鼠标x轴坐标
+- layerY    最近的绝对定位的父元素（如果没有，则为Document对象）左上角为原点，定位鼠标ｙ轴坐标
+
+## 元素位置属性
+- offsetHeight：元素在垂直方向上占用的空间大小，以像素计。包括元素的高度、水平滚动条的高度、上边框高度和下边框的高度。
+- offsetWidth：元素在水平方向上占用的空间大小，以像素计。包括元素的宽度、垂直滚动条的宽度、左边框宽度和右边框宽度。
+- offsetLeft：元素的左外边框至包含元素的左内边框之间的像素距离。
+- offsetTop：元素的上外边框至包含元素的上内边框之间的像素距离。

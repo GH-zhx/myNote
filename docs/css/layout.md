@@ -1,14 +1,7 @@
 # 布局
 ## 布局技术
 ### 普通流布局
-### 浮动布局
-利用浮动布局实现文字环绕效果
-```html
-<div class="parent">
-      <div class="child" style="float:left"></div>
-      fdsgsdffdsgsdffdsgsdffdsgsdffdsgsdf
-</div>
-```
+
 ### 弹性布局(flex布局)
 垂直水平居中
 ```css
@@ -56,12 +49,9 @@ algin-items:center
 }
 </style>**
 ```
-效果图
-![在这里插入图片描述](https://img-blog.csdnimg.cn/d6fb6a5b7d574a3a94913ba0b45349b9.png)
+
 ### 三栏布局
 两侧固定宽度，中间填满剩余宽度。
-效果图
-**![](https://img-blog.csdnimg.cn/c0b454499acf444f937ddee361edd5d4.png)
 1. position+margin实现
 左右侧使用绝对定位并给定宽度，中间给对应宽度的左右margin
 2. 圣杯布局
@@ -167,6 +157,7 @@ algin-items:center
 }
 ```
 ### 文字环绕图片
+文字环绕原理是浮动后子元素脱离文档流使得父元素内的文字可以从父元素的起始位置进行排列又因为浮动只脱离了半层导致文字被浮动元素的下层阻挡了
 ```html
   <div class="container" style="width: 100px;height: 100px;">
     <div class="middle1" style="float:left;width:50px;height: 50px;">中间</div>

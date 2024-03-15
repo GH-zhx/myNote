@@ -141,6 +141,21 @@ background-position: top right 10px;
 - 百分比 保持图片宽高比缩放图片以刚好填充背景区的百分比区域，当值为100%时相当于cover
 - 具体值：background-size: 200px 100px 图片按指定宽高缩放，如果值为auto，则保持原图片对应的宽高。
 
+## 包含块
+根元素是初始包含块。通常一个元素的包含块是最近的祖先块元素，但是当元素的position属性取值不一样时，有不同的情况
+1. 当position值为static/relative/sticky时，包含块就是离自己最近的祖先块元素。
+2. 当position值为fixed时，如果有祖先块元素符合以下一种情况则该祖先元素便是其包含块，否则就是包含块就是根元素。
+- transform 或 perspective 的值不是 none
+- will-change 的值是 transform 或 perspective
+- filter 的值不是 none 或 will-change 的值是 filter(只在 Firefox 下生效).
+- contain 的值是 paint (例如:contain: paint;)
+3. 当position值为absolute时，如果有祖先块元素符合以下一种情况则该祖先元素便是其包含块，否则就是包含块就是根元素。
+- position值不为static。
+- transform 或 perspective 的值不是 none
+- will-change 的值是 transform 或 perspective
+- filter 的值不是 none 或 will-change 的值是 filter(只在 Firefox 下生效).
+- contain 的值是 paint (例如:contain: paint;)
+
 
 
 

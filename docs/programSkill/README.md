@@ -288,3 +288,19 @@ run(main)
 
 ## 兄弟组件通信
 在父元素中获取全部子元素的信息，然后将该信息汇总传递给所有子元素。
+
+## 3D图形
+利用颜色变化(渐变)提供亮暗效果来模拟图片立体效果
+
+## canvas绘画视频
+定时获取当前video的当前帧图像。
+
+## requestAnimationFrame实现动画
+```js
+const render = function(){
+  // do something
+  requestAnimationFrame(render)
+}
+requestAnimationFrame(render)
+```
+
