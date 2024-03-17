@@ -82,65 +82,6 @@ div{
 }
 ```
 
-## background
-### background-attachment
-规定背景图片如何滚动。
-- scroll 背景所在元素滚动不会滚动背景，元素外的滚动条滚动会带动内容和背景一起滚动。
-- fixed 任意滚动条滚动都不会使背景图片滚动。
-- local 任意滚动条滚动都会滚动背景。
-### background-clip
-规定背景图片填充的区域
-- border-box
-- padding-box
-- content-box
-- text 背景将只显示在文字的下方，如果此时将字体的颜色设置为透明，则字体颜色就是背景图片。
-### background-image
-设置背景图片，可以设置多个图片，并且可以设置渐变。设置图片使用url，设置渐变使用linear-gradient，渐变是一张图片
-```css
-  background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)),url("./media/examples/lizard.png");
-```
-linear-gradient的用法
-```css
-/* 第一个参数可以设置渐变方向，可以使角度或方向 */
-background:linear-gradient(to right,red,yellow);
-background:linear-gradient(45deg,red,yellow,green);
-/* 每个颜色可以设置渐变位置，可以设置百分比，像素等 */
-background:linear-gradient(red 0%,yellow 50%,green 100%)  
-background:linear-gradient(red 0,yellow 75px,green 150px);
-```
-### background-origin
-和background-clip一样的效果，没有text值。
-
-### background-position
-规定背景图片的渲染位置
-```css
-background-position: top;
-background-position: bottom;
-background-position: left;
-background-position: right;
-background-position: center;
-background-position: 25% 75%;
-background-position: bottom 10px right 20px;
-background-position: right 3em bottom 10px;
-background-position: bottom 10px right;
-background-position: top right 10px;
-```
-### background-repeat
-规定背景图片的重复方式
-- repeat-x 水平方向重复
-- repeat-y 垂直方向重复
-- no-repeat 不重复
-- space 在四个角重复
-- round 缩放图片后重复
-
-### background-size
-规定背景图片的大小
-- contain 保持图片宽高比缩放以保证图片刚好完全放入背景区
-- cover 保持图片宽高比缩放以刚好完全覆盖背景区
-- auto 保持原图片的高宽。
-- 百分比 保持图片宽高比缩放图片以刚好填充背景区的百分比区域，当值为100%时相当于cover
-- 具体值：background-size: 200px 100px 图片按指定宽高缩放，如果值为auto，则保持原图片对应的宽高。
-
 ## 包含块
 根元素是初始包含块。通常一个元素的包含块是最近的祖先块元素，但是当元素的position属性取值不一样时，有不同的情况
 1. 当position值为static/relative/sticky时，包含块就是离自己最近的祖先块元素。
@@ -155,6 +96,77 @@ background-position: top right 10px;
 - will-change 的值是 transform 或 perspective
 - filter 的值不是 none 或 will-change 的值是 filter(只在 Firefox 下生效).
 - contain 的值是 paint (例如:contain: paint;)
+
+## 语法
+### background
+1. background-attachment，规定背景图片如何滚动。
+- scroll 背景所在元素滚动不会滚动背景，元素外的滚动条滚动会带动内容和背景一起滚动。
+- fixed 任意滚动条滚动都不会使背景图片滚动。
+- local 任意滚动条滚动都会滚动背景。
+2. background-clip，规定背景图片填充的区域
+- border-box
+- padding-box
+- content-box
+- text 背景将只显示在文字的下方，如果此时将字体的颜色设置为透明，则字体颜色就是背景图片。
+3. background-image，设置背景图片，可以设置多个图片，并且可以设置渐变。设置图片使用url，设置渐变使用linear-gradient，渐变是一张图片
+```css
+  background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)),url("./media/examples/lizard.png");
+```
+linear-gradient的用法
+```css
+/* 第一个参数可以设置渐变方向，可以使角度或方向 */
+background:linear-gradient(to right,red,yellow);
+background:linear-gradient(45deg,red,yellow,green);
+/* 每个颜色可以设置渐变位置，可以设置百分比，像素等 */
+background:linear-gradient(red 0%,yellow 50%,green 100%)  
+background:linear-gradient(red 0,yellow 75px,green 150px);
+```
+4. background-origin，和background-clip一样的效果，没有text值。
+
+5. background-position，规定背景图片的渲染位置
+```css
+background-position: top;
+background-position: bottom;
+background-position: left;
+background-position: right;
+background-position: center;
+background-position: 25% 75%;
+background-position: bottom 10px right 20px;
+background-position: right 3em bottom 10px;
+background-position: bottom 10px right;
+background-position: top right 10px;
+```
+6. background-repeat，规定背景图片的重复方式
+- repeat-x 水平方向重复
+- repeat-y 垂直方向重复
+- no-repeat 不重复
+- space 在四个角重复
+- round 缩放图片后重复
+
+7. background-size，规定背景图片的大小
+- contain 保持图片宽高比缩放以保证图片刚好完全放入背景区
+- cover 保持图片宽高比缩放以刚好完全覆盖背景区
+- auto 保持原图片的高宽。
+- 百分比 保持图片宽高比缩放图片以刚好填充背景区的百分比区域，当值为100%时相当于cover
+- 具体值：background-size: 200px 100px 图片按指定宽高缩放，如果值为auto，则保持原图片对应的宽高。
+
+8. background
+是背景的简写形式，可以同时配置多种属性，如果该属性写在最后会覆盖之前写的单独属性。
+- currentColor 背景跟随当前元素内容的颜色
+
+### filter
+元素像素处理属性，可以对元素的的图案进行模糊，颜色变换等效果，值为各种处理函数。
+
+### mix-blend-mode
+描述元素内容与元素背景如何混合，可以借此实现文字颜色的反色效果
+```css
+.title{
+mix-blend-mode: difference;
+/* 颜色设置成白色效果最明显 */
+color: #fff; 
+}
+```
+
 
 
 

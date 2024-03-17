@@ -1,16 +1,24 @@
 # 布局
 ## 布局技术
-### 普通流布局
+### 浮动布局
 
 ### 弹性布局(flex布局)
-垂直水平居中
-```css
-.shuipinjuzhong{
-display:flex;
-justify-content:center;
-algin-items:center
-}
-```
+1. 容器属性
+- flex-direction: 设置主轴的方向
+- justify-content: 设置主轴上的子元素排列方式
+- flex-wrap: 设置子元素是否换行啊
+- align-content: 设置侧轴上子元素的排列方式（多行）
+- align-items: 设置侧轴上的子元素排列方式(单行)
+- flex-flow: 复合属性，相当于同时设置了flex-direction和flex-wrap
+2. 项目的属性
+- flex-grow 对每行剩余空间的分成，初始为0。
+- flex-shrink 当一行的所有项目宽度大于容器的宽度时，代表每个项目对宽度差值的减少比例，初始值是1.
+- flex-basis 设置项目的box-sizing的宽度，优先级高于手动设置的width。
+- align-self 设置项目在当前行的对齐方式，值和align-items一样，且会覆盖align-items的值。
+- order 设置项目的显示顺序。
+- flex flex-grow、flex-shrink、flex-basis三者的简写。
+
+
 ### 网格布局
 - display: grid : 设置container容器为网格布局
 - grid-template-columns与grid-template-rows:分别设置网格的列宽与行高，取值有多种形式例如：
@@ -21,7 +29,7 @@ algin-items:center
 
 ## 常见的布局方式
 ### 双栏目布局
-左侧固定宽度，右侧充满剩余宽度。
+左侧固定宽度，右侧充满剩余宽度。原理是左侧浮动后脱离文档流，右侧块元素会自动从父元素起始位置开始渲染，但是由于浮动元素只提升半层导致块元素被阻拦只能填满右侧剩余宽度。
 ```html
 **<style>
 * {
@@ -47,7 +55,7 @@ algin-items:center
     height: 30px;
     background-color: red;
 }
-</style>**
+</style>
 ```
 
 ### 三栏布局
@@ -69,6 +77,7 @@ algin-items:center
 使用flex容器，直接固定两边子项的宽度即可。
 
 由于圣杯布局 设置了父元素的padding，所以左右元素在移动时，其实位置已经改变了，所以需要再通过相对定位来进行调节。
+
 ### 响应式布局
 在不同的页面分辨率下，呈现不一样的布局方式。
 1. css媒体查询
@@ -164,7 +173,8 @@ algin-items:center
     <span style="word-wrap: break-word;">your content</span>
   </div>
 ```
-### 水平居中的方式
+
+## 水平垂直居中的方式
 1. marin：auto
 需要自身宽度确定且为块元素。父元素宽度不能由子元素宽度撑开。
 ```html
@@ -172,3 +182,12 @@ algin-items:center
   <div style="margin:auto"></div>
 </div>
 ```
+2. flex垂直水平居中
+```css
+.shuipinjuzhong{
+display:flex;
+justify-content:center;
+algin-items:center
+}
+```
+
