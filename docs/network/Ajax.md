@@ -82,5 +82,45 @@ fetch(url,{
 请求状态为401或500时，不会进入catch，会进入then
 ## axios
 底层依然使用了xhr
+### 取消请求
+```js
+let send_btn = document.getElementById("send_btn")       //发送请求按钮
+let cancel_btn = document.getElementById("cancel_btn")	 //取消请求按钮
+let cancel = null;     
+send_btn.onclick = function(){
+		if(cancel != null){
+			cancel()     //如果上一次的请求还在继续，则取消
+		}
+		axios({
+			method:"get",
+			url:"http://localhost:3000/test.php",
+			cancelToken:new axios.CancelToken(function(c){
+				cancel = c
+			})
+		}).then(response=>{
+			//处理响应数据
+			cancel = null
+		}).catch(reason=>{
+			//错误处理
+		})
+}
+
+cancel_btn.onclick = function(){
+	//取消请求
+	cancel()
+}
+
+```
 ## jquery
 底层依然使用了xhr
+```js
+// 发送请求
+let r = $.ajax(url,{
+  method:'GET' | 'POST',
+  data:{},
+  success:()=>{},
+  error:()=>{}
+})
+// 取消请求
+r.abort()
+```

@@ -27,6 +27,24 @@ div{
 }
 ```
 
+## css变量(自定义属性)
+将属性名设置成```--```开头的属性为自定义属性，其值可以使用var()方法进行获取,获取变量时会由此从自身-祖先元素-全局变量中寻找对应的变量
+```css
+/* 定义全局变量 */
+:root{
+  --bg-color: #fff
+}
+/* 使用全局变量 */
+div{
+  /* 定义局部变量 */
+  --div-color:blue;
+  /*使用全局变量 第二个参数为获取不到时的默认值,但如果没有获取到且没有设置默认值得到继承值 */
+  background-color:var(--bg-color,red);f..
+  /* 使用局部变量 */
+  color:var(--div-color,red)
+}
+```
+
 ## css module
 为了防止命名冲突，将css中的类名通过文件路径和类名生成哈希类名。只需要在webpack中配置css-loader即可。
 1. 配置文件中的写法
@@ -97,6 +115,26 @@ div{
 - filter 的值不是 none 或 will-change 的值是 filter(只在 Firefox 下生效).
 - contain 的值是 paint (例如:contain: paint;)
 
+## BFC
+BFC全称是Block Formatting Context，意思就是块级格式化上下文，即块元素的一种渲染规则。
+1. 特征
+- BFC是一个块级元素，块级元素在垂直方向上依次排列。
+- BFC是一个独立的容器，内部元素不会影响容器外部的元素。
+- 属于同一个BFC的两个盒子，外边距margin会发生重叠，并且取最大外边距。
+- 计算BFC高度时，浮动元素也要参与计算。
+2. 开启条件
+- overflow: hidden;
+- display: flex;
+- display: inline-flex;
+- display: inline-block;
+- position: absolute;
+- position: fixed;
+3. 作用
+- 解决由于浮动带来的父元素高度塌陷问题。
+- 解决相邻的父子元素marginTop重叠问题。
+
+## 多项目垂直对齐。
+
 ## 语法
 ### background
 1. background-attachment，规定背景图片如何滚动。
@@ -123,14 +161,19 @@ background:linear-gradient(red 0,yellow 75px,green 150px);
 ```
 4. background-origin，和background-clip一样的效果，没有text值。
 
-5. background-position，规定背景图片的渲染位置
+5. background-position，规定背景图片在元素中经过background-size缩放后的的渲染位置
 ```css
+/* 一个关键值时表示图片在元素靠近该关键字摆放，另一个方向默认将图片的中心点放在其中心。 */
 background-position: top;
 background-position: bottom;
 background-position: left;
 background-position: right;
 background-position: center;
+/* 当值为百分比时，将图片的中心点放置在元素对应百分比的位置，如果background-size的设置导致图片的宽或高需要撑满元素的一个方向，那这个方向的百分比无效。 */
 background-position: 25% 75%;
+/* 将图片按照其它设置放置好后，偏移量为传入的值*/
+background-position: 20px 30px;
+/* 以下形式是是图片摆放在以其对应边界偏移量的平行线构成的直角内 */
 background-position: bottom 10px right 20px;
 background-position: right 3em bottom 10px;
 background-position: bottom 10px right;
@@ -164,6 +207,34 @@ background-position: top right 10px;
 mix-blend-mode: difference;
 /* 颜色设置成白色效果最明显 */
 color: #fff; 
+}
+```
+
+### 动画
+1. 定义动画
+```css
+@keyframes move {
+    /* 开始状态 */
+    0% {
+        transform: translateX(0px);
+    }
+    /* 结束状态 */
+    100% {
+        transform: translateX(1000px);
+    }
+}
+```
+2. 使用动画
+```css
+div {
+    width: 200px;
+    height: 200px;
+    background-color: pink;
+    /* 2.调用动画 */
+    /* 动画名称 */
+    animation-name: move;
+    /* 持续时间 */
+    animation-duration: 2s;
 }
 ```
 

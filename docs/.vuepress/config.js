@@ -14,12 +14,12 @@ module.exports = {
     lastUpdated: false,
     navbar: [
       {
-        text: "WebAPI",
-        link: "/WebAPI/",
+        text: "node",
+        link: "/node/",
       },
       {
-        text: "structure",
-        link: "/structure/",
+        text: "WebAPI",
+        link: "/WebAPI/",
       },
       {
         text: "structure",
@@ -190,6 +190,12 @@ module.exports = {
         {
           text: 'WebAPI',
           children: ['/WebAPI/README.md']
+        }
+      ],
+      "/node/": [
+        {
+          text: 'node',
+          children: ['/node/README.md']
         }
       ],
     },

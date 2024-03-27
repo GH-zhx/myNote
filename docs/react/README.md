@@ -1352,8 +1352,9 @@ React使用了Object.is来比较state的。
 当我们同步调用多个setState时，在第一个setState被调用时，react同步将该state的值进行更新，然后将更新组件的代码放入一个微任务中。所以当第一个setState执行后，不会立刻更新组件，而是会继续调用其它的setState进行状态值的修改。当组件内所有同步setState执行完后，微任务的回调执行，执行完后将该微任务的变量置空。
 
 ### Effect Hook
-每一次渲染都会调用该hook，相当于类组件的componentDidMount，componentDidUpdate 和 componentWillUnmount 这三个函数的组合。
-组件每次渲染的时候都会执行一遍useeffect函数，所以每次渲染都会生成一个新的effect，保证每次的变量是最新的。同时，会将上一个effect清除，清除的同时会执行useEffect返回的函数。
+- 每一次渲染都会调用该hook，相当于类组件的componentDidMount，componentDidUpdate 和 componentWillUnmount 这三个函数的组合。
+- 组件每次渲染的时候都会执行一遍useeffect函数，所以每次渲染都会生成一个新的effect，保证每次的变量是最新的。同时，会将上一个effect清除，清除的同时会执行useEffect返回的函数。
+- 在开发模式下，且使用了严格模式，那么useeffect会加载两次，为了模拟立即卸载组件后又重新挂载组件的情形。 
 ```js
   useEffect(() => {
     // 使用浏览器的 API 更新页面标题

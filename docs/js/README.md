@@ -5,6 +5,13 @@
 3.  script标签的defer属性代表等待所有渲染完成后才执行，async代表只要资源下载完就会执行其内部代码，两者都会异步下载js文件，不会阻碍渲染引擎。
 4. noscript标签可以在浏览器不支持脚本和关闭脚本支持时执行。
 ## 语言基础
+
+### var
+- 不在函数内使用var定义的变量会自动变成全局变量。
+- 会进行变量提升，即使是return语句后面的声明。
+- 同一变量再次使用var定义会自动取消var的声明过程，不过赋值语句同样有效。
+- 函数提升在var变量提升之前
+
 ### let和const关键字
 let和const是块级作用域，即在()和{}内部定义的变量不能在其外部访问，但是var是函数作用域，只要在同一个函数内就可以被访问。
 在全局作用域下使用var定义会将变量变为window的属性，但是let和const不会。
@@ -69,7 +76,7 @@ let num3 = 3e5 // 表示300000
 let num4 = 3e-5 // 表示0.00003
 ```
 #### 最值
-最大值为MAX_VALUE = 1.7976931348623157e308，也可表示为Infinity；最小值为5e-324，也可表示为-Infinity。
+最大值为MAX_VALUE = 1.7976931348623157e308为2的53次方，最小值为MIN_VALUE=5e-324为2的负53次方，接近零但大于0。
 #### NaN
 NaN表示本来是要返回数字的操作失败了，不是抛出错误，NaN和任何值操作都返回NaN，NaN不等于包括NaN在内的任何值。
 #### 数值比较
@@ -603,9 +610,10 @@ Date().valueOf() // 1515143895500
 1. 两边类型一致，进行值判断(NaN不等于NaN, null等于undefined)返回结果。
 2. 两边类型不一样
 - 如果只有一边出现了null或undefined就返回false，如果两边都是null或undefined就返回true
-- 看两边有没有boolean或对象，有则先将Boolean进行toNumber，将对象进行ToPrimitive
-- 然后看两边类型是否一样，如果不一样将string类型进行toNumber
-- 最后比较两个number的值
+- 看两边有没有boolean，有则先将Boolean进行toNumber
+- 看两边有没有对象，有则将对象进行ToPrimitive
+- 然后看两边类型是否一样，如果不一样将string类型进行toNumber后比较number的值
+- 所有条件都不符合返回false
 
 #### +
 ```js
@@ -676,7 +684,7 @@ function Person (name){
 }
 ```
 ### new 关键字
-new 的过程如下：
+new 的过程如下：1
 - 创建一个空的简单 JavaScript 对象
 - 为新创建的对象添加属性__proto__，将该属性链接至构造函数的原型对象
 - this指向新创建的对象
@@ -694,6 +702,10 @@ obj.a // 1
 ```
 ## 数组的空位
 数组的支持空位，即标识没有该属性名和属性值，如果取值会返回undefined，空位会反应在length上。in，hasOwnProperty、object.keys，array.map都不能取到数组的空位。
+
+## 无穷大和无穷小
+1. 无穷大 +Infinity，一个数值类型的值，表示比任何一个实数都大
+2. 无穷小 -Infinity，一个数值类型的值，表示比任何一个实数都小
 
 
 

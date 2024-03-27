@@ -304,3 +304,32 @@ const render = function(){
 requestAnimationFrame(render)
 ```
 
+## 隐藏滚动条
+- 在滚动条坐在的元素外在增加一个父元素，将这个父元素设置overflow为hidden，并且将其宽度设为滚动条元素去掉滚动条的宽度。
+- 在滚动条的上方覆盖一个元素，调整元素的宽度以覆盖整个滚动条。
+- 使用滚动条选择器来对其进行样式设置，不过兼容性不是很好。
+
+## 深拷贝
+1. JSON.stringify() 和JSON.parse()
+2. 循环递归，基本上所有库都是通过循环递归实现的。.
+
+## vue
+### hook的使用
+可以减少多余变量的定义。
+```js
+export default{
+  methods:{
+    fn(){
+      let timer = setInterval(()=>{
+        //具体执行代码
+        console.log('1');
+      },1000);
+      this.$once('hook:beforeDestroy',()=>{
+        clearInterval(timer);
+        timer = null;
+      })
+    }
+  }
+}
+```
+
