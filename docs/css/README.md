@@ -233,6 +233,7 @@ div {
     /* 2.调用动画 */
     /* 动画名称 */
     animation-name: move;
+    
     /* 持续时间 */
     animation-duration: 2s;
 }

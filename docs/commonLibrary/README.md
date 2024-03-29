@@ -78,5 +78,11 @@ myChart.clear() // 清除当前图像。
 ## TailwindCSS
 在vue中常用的一个css转换器。
 
+## git
+1. 
+
+2. 命令
+
+
 
 
