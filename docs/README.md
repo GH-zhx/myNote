@@ -1,7 +1,7 @@
 ---
 home: true
 title: 首页
-heroImage: /imgs/logo.svg
+heroImage: /imgs/favicon.jpg
 actions:
   - text: React
     link: /react/

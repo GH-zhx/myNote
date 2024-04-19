@@ -69,6 +69,10 @@ module.exports = {
         text: "面试题",
         link: "/test/",
       },
+      {
+        text: "web3D",
+        link: "/web3D/",
+      },
     ],
     sidebar: {
       "/structure/": [
@@ -240,6 +244,20 @@ module.exports = {
         {
           text: "node",
           children: ["/node/README.md"],
+        },
+      ],
+      "/web3D/": [
+        {
+          text: "web3D",
+          children: ["/web3D/README.md"],
+        },
+        {
+          text: "Babylon.js",
+          children: ["/web3D/Babylon/README.md"],
+        },
+        {
+          text: "Three.js",
+          children: ["/web3D/Three/README.md"],
         },
       ],
     },
