@@ -80,6 +80,7 @@ console.log(path.extname('README.md')); // .md
 
 // npm init   npm 初始化当前目录
 // npm i   安装所有依赖
+// npm install --legacy-peer-deps 安装所有依赖且忽略依赖版本错误。
 // npm i express   安装模块到默认dependencies
 // npm i express -g   会安装到配置的全局目录下
 // npm i express -S   安装包信息将加入到dependencies生产依赖
