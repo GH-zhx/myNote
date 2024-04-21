@@ -209,6 +209,37 @@ mix-blend-mode: difference;
 color: #fff; 
 }
 ```
+### 粘连定位
+该元素会固定在拥有滚动机制(overflow为hidden、scroll、auto 或 overlay)的祖先元素上，且会保留其在文档流中的原来位置，偏移量相对于原来的位置。
+
+### fit-content
+可以用来设置高宽，代表大小由内容撑开，内容多大，高宽就多大。
+
+### overflow
+- visible 内容不能被裁剪，溢出父元素显示
+- hidden 内容被裁剪显示
+- scroll x，y轴滚动条都出现
+- auto x，y轴滚动条根据内容是否超出来出现
+- overlay 机制于auto相同，但滚动条绘制在内容上，而不是单独占据空间。
+
+### text-overflow
+规定文字超出父元素后的显示样式。
+
+### white-space & word-break & word-wrap
+1. white-space 用于空白符的处理和规定文本是否换行
+- normal 连续的空白符会被合并。源码中的换行符会被当作空白符来处理。并根据填充行框盒子的需要来换行。
+- nowrap 和 normal 一样合并空白符，但阻止源码中的文本换行。
+- pre 连续的空白符会被保留。仅在遇到换行符或 br元素时才会换行。
+- pre-wrap 连续的空白符会被保留。在遇到换行符或br元素时，或者根据填充行框盒子的需要换行。
+- pre-line 连续的空白符会被合并。在遇到换行符或br元素时，或者根据填充行框盒子的需要换行
+
+2. word-break 表示单词是否可以被截断
+- break-all 对于 non-CJK (CJK 指中文/日文/韩文) 文本，可在任意字符间断行。
+- keep-all CJK 文本不断行。Non-CJK 文本表现同 normal
+
+3. word-wrap 和white-space一样可以控制文本换行
+- break-word 文本换行
+- normal 默认不会让文本换行
 
 ### 动画
 1. 定义动画

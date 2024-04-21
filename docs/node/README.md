@@ -53,19 +53,12 @@ console.log(path.extname('README.md')); // .md
 ```
 
 ## 包管理工具
-### npm&yarn
-都是包管理工具，但是yarn对比npm有更多的优势。两者设置的淘宝镜像是淘宝团队在中国提供的js库的一个同步数据库。
-1. npm的特点
+### npm
+1. 特点
 - npm install 下载速度慢，即使是重新 install 时速度依旧慢
 - 同一个项目，安装的无法保持一致性。原因是因为 package.json 文件中版本号的特点导致在安装的时候代表不同的含义。
 - 使用 npm 安装多个 js 包时，包会在同一时间下载和安装。安装过程中，其中一个包抛出了一个异常，但 npm 会继续安装其他包，所以错误信息就会在一大堆提示信息中丢失掉，以至于直到执行前，都不会发现实际发生的错误。
-2. yarn和npm的区别。
-- 并行安装：yarn安装包会同时执行多个任务，npm 需等待上一个任务安装完成才能运行下一个任务
-- 离线模式：如果你已经安装过一个包，用 yarn 再次安装会从缓存中获取，而 npm 会从网络下载
-- 版本锁定：yarn 默认有一个 yarn.lock 文件锁定版本，保证环境统一，而 npm 默认从网络下载最新的最稳定的，版本锁定可以解决包之间版本不兼容问题，npm 也可以通过命令实现版本锁定
-- 更简洁的输出：yarn 安装包时输出的信息较少，npm 输出信息冗余
-3. 下载命令
-- npm
+2. 命令
 ```js
 // 设置全局的npm淘宝镜像
 // npm config set registry https://registry.npm.taobao.org   该淘宝镜像地址于2022.6.30下线
@@ -109,7 +102,14 @@ console.log(path.extname('README.md')); // .md
 // npm docs jquery   会打开默认浏览器跳转到github中jquery的README.MD文件信息
 // npm home jquery   会打开默认浏览器跳转到github中jquery的主页
 ```
-- yarn
+### yarn
+1. 特点
+- 并行安装：yarn安装包会同时执行多个任务，npm 需等待上一个任务安装完成才能运行下一个任务
+- 离线模式：如果你已经安装过一个包，用 yarn 再次安装会从缓存中获取，而 npm 会从网络下载
+- 版本锁定：yarn 默认有一个 yarn.lock 文件锁定版本，保证环境统一，而 npm 默认从网络下载最新的最稳定的，版本锁定可以解决包之间版本不兼容问题，npm 也可以通过命令实现版本锁定
+- 更简洁的输出：yarn 安装包时输出的信息较少，npm 输出信息冗余
+
+2. 命令
 ```js
 // yarn -v   查看yarn 版本
 // yarn config list   查看yarn配置
@@ -167,8 +167,15 @@ console.log(path.extname('README.md')); // .md
 // yarn cache dir 返回 全局缓存位置 
 // yarn cache clean 清除缓存
 ```
+
+### pnpm
+1. 特点
+具有yarn的所有优点，并且对于本地已有的缓存库是直接建立链接过去，而不是向yarn一样拷贝一份到项目目录。
+2. 命令
+命令和yarn几乎一致。
+
 ### cnpm
-国内开发的淘宝镜像包管理工具，默认下载从国内的淘宝同步站(```http://npmmirror.com```)上获取资源。命令和npm一样，除了publish不能实现。
+国内开发的淘宝镜像(淘宝团队在中国提供的js库的一个同步数据库)包管理工具，默认下载从国内的淘宝同步站(```http://npmmirror.com```)上获取资源。命令和npm一样，除了publish不能实现。
 ```js
 // npm install -g cnpm --registry=https://registry.npmmirror.com
 ```
