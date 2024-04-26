@@ -10,17 +10,19 @@
 
 人眼坐标
 
-### 灯光
-
-太阳坐标
-
 ### 坐标系
 
-默认采用左手坐标系，x，y 轴方向与 web 元素坐标轴相反。
+默认采用左手坐标系。
 
 ### 材质
 
 光线照在物体上时，不同部位会发生不同的光反射效果，材质对象可以定义这些不同反射效果部位的颜色。
+
+### 灯光
+
+3d 中如果没有灯光，则物体是黑色的，有四种灯光分别是点光，平行光，聚光灯，半球光，灯光法线代表与灯光方向逆向
+
+### 顶点
 
 ## api
 
@@ -89,26 +91,151 @@ myMaterial.diffuseTexture = new BABYLON.Texture("PATH TO IMAGE", scene);
 
 ### BABYLON.UniversalCamera
 
-构建通用相机
+构建通用相机，镜头只能看见物体的一面，相当于人眼固定位置不断转身观看四周。
 
 ```js
 // 参数顺序 : name相机名称, position相机放置的位置, scene场景实例
 var camera = new BABYLON.UniversalCamera(
   "UniversalCamera",
-  new BABYLON.Vector3(0, 0, -10),
+  new BABYLON.Vector3(0, 0, -10), // 相机位置
   scene
 );
+// 设置相机默认观察点
+camera.setTarget(BABYLON.Vector3.Zero());
 // 让相机响应用户操作
 camera.attachControl(canvas, true);
 ```
 
 ### BABYLON.ArcRotateCamera
 
-构建弧形相机
+构建弧形相机，相机固定观察某个目标点，但是眼睛可以围绕观察点按照设置的半径的球形范围旋转观察目标点不同方位
 
-## 变换
+```js
+// 参数: alpha, beta, radius, 目标位置position, scene场景实例
+var camera = new BABYLON.ArcRotateCamera(
+  "Camera",
+  0,
+  0,
+  10,
+  new BABYLON.Vector3(0, 0, 0),
+  scene
+);
+// alpha beta参数规定相机的初始视角，值为弧度值，alpha为x轴顺时针的的旋转量，beta为y轴顺时针的旋转量，
+// 设置后会覆盖alpha, beta, radius
+camera.setPosition(new BABYLON.Vector3(0, 0, 20));
 
-### 位置
+// 让相机响应用户操作
+camera.attachControl(canvas, true);
+```
+
+### BABYLON.PointLight
+
+创建一个点光源
+
+```js
+//第二个参数是点光的位置。
+var light = new BABYLON.PointLight(
+  "pointLight",
+  new BABYLON.Vector3(1, 10, 1),
+  scene
+);
+
+// 传入true或false来设置灯光的开启或关闭
+light.setEnabled();
+// 设置光照强度
+light0.intensity = 0.5;
+light1.intensity = 2.4;
+// 这个属性可以设置点光和聚光灯能够照射的距离
+light.range = 100;
+```
+
+### BABYLON.DirectionalLight
+
+创建一个方向的平行光
+
+```js
+//第二个参数表示平行光的方向
+var light = new BABYLON.DirectionalLight(
+  "DirectionalLight",
+  new BABYLON.Vector3(0, -1, 0),
+  scene
+);
+```
+
+### BABYLON.SpotLight
+
+创建一束聚光灯
+
+```js
+//第2个参数是位置、第3个参数是方向，第4个参数角度angle，第5个参数指数exponent(灯光从光源开始的衰减速度)
+var light = new BABYLON.SpotLight(
+  "spotLight",
+  new BABYLON.Vector3(0, 30, -10),
+  new BABYLON.Vector3(0, -1, 0),
+  Math.PI / 3,
+  2,
+  scene
+);
+```
+
+### BABYLON.HemisphericLight
+
+创建一个半球光，可以模拟室外光, 光源在世界坐标中兴(0,0,0),只需要给定一个方向
+
+```js
+//第2个参数是方向
+var light = new BABYLON.HemisphericLight(
+  "HemiLight",
+  new BABYLON.Vector3(0, 1, 0),
+  scene
+);
+```
+
+### BABYLON.Animation
+
+创建动画
+
+```js
+var animationBox = new BABYLON.Animation(
+  "myAnimation",
+  "position", // 需要改变的物体的属性
+  30,
+  BABYLON.Animation.ANIMATIONTYPE_VECTOR3, // 改变的值的类型，包括浮点型，三维向量等
+  BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE // 动画结束后的处理方式，循环，停止等
+);
+// 动画在某些节点达到的值，类似css动画
+var keys = [
+  {
+    frame: 50,
+    value: new BABYLON.Vector3(3, 3, 0),
+  },
+  {
+    frame: 100,
+    value: new BABYLON.Vector3(8, 8, 0),
+  },
+];
+animationBox.setKeys(keys);
+myBox.animations = [];
+myBox.animations.push(animationBox);
+// 开启动画，返回的newAnimation对象可以调用暂停，重置等方法控制动画的行为。
+var newAnimation = scene.beginAnimation(myBox, 0, 100, true);
+
+// 可以调用CreateAndStartAnimation方法简化上诉流程,但是只能定义两个关键帧
+
+BABYLON.Animation.CreateAndStartAnimation(
+  "boxscale",
+  myBox,
+  "position",
+  50,
+  100,
+  new BABYLON.Vector3(3, 3, 0),
+  new BABYLON.Vector3(8, 8, 0)
+);
+```
+
+### 变换
+
+1. 位置
 
 ```js
 //常规设置
@@ -119,11 +246,11 @@ pilot.position.y = 3;
 pilot.position.z = 4;
 ```
 
-### 旋转
+2. 旋转
 
-1. 物体按照所在空间坐标系进行旋转(弧度制)
+- 物体按照所在空间坐标系进行旋转(弧度制)
 
-2. 物体按照自己中心点的坐标系进行旋转
+- 物体按照自己中心点的坐标系进行旋转(弧度制)
 
 ```js
 //常规设置
@@ -141,7 +268,7 @@ mesh
   .addRotation(0, 0, Math.PI / 2);
 ```
 
-### 缩放
+3. 缩放
 
 ```js
 //常规设置
@@ -151,4 +278,10 @@ mesh.scaling = new BABYLON.Vector3(scale_x, scale_y, scale_z);
 mesh.scaling.x = 5;
 mesh.scaling.y = 5;
 mesh.scaling.z = 5;
+```
+
+### 常量
+
+```js
+
 ```
