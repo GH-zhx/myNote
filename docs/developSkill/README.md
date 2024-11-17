@@ -272,6 +272,7 @@ function debounce(func, delay) {
     timer = setTimeout(function () {
       //执行事件处理程序
       func.call(that, args);
+      
     }, delay);
   };
 }
@@ -382,3 +383,10 @@ export default {
 1. 使用keepalive然后再特定节点清除缓存。
 2. 将新页面覆盖原页面，实现假的缓存，此时需要将
 3. 将新页面作为原页面的路由子组件实现缓存
+
+### vue全局事件总线
+使用全局事件总线时再组件下载时记得关闭事件或者在注册时先关闭事件。
+
+## 常用业务逻辑总结
+### 流程
+

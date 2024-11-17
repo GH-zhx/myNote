@@ -19,3 +19,6 @@ process.env 的 NODE_ENV 等 node 模块变量如果使用链式调用符出现�
 ## 服务器部署了接口，但是请求不成功
 
 清空浏览器缓存或将 network 的 disable cache 勾上
+
+## 浏览器netwwork面板不显示ajax请求
+可能将该该面板的3D-party request点击了勾选。
